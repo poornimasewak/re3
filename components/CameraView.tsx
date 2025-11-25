@@ -153,7 +153,7 @@ export default function CameraView({ onCapture, onClose, showScanning = false }:
       )}
 
       {/* Controls */}
-      <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-6 px-6">
+      <div className="absolute bottom-24 left-0 right-0 flex items-center justify-center gap-6 px-6">
         {/* Toggle Camera */}
         <button
           onClick={toggleCamera}
