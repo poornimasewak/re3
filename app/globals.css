@@ -1,11 +1,22 @@
 @import "tailwindcss";
 
 :root {
+  /* Re3 Color Scheme */
+  --sea-green: #20B2AA;
+  --dark-sea-green: #2E8B57;
+  --gold: #FFD700;
+  --light-green-bg: #e0f7f4;
+  --white: #FFFFFF;
   --background: #ffffff;
   --foreground: #171717;
 }
 
 @theme inline {
+  /* Custom colors for Re3 app */
+  --color-sea-green: var(--sea-green);
+  --color-dark-sea-green: var(--dark-sea-green);
+  --color-gold: var(--gold);
+  --color-light-green-bg: var(--light-green-bg);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -20,7 +31,84 @@
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, var(--light-green-bg) 0%, var(--white) 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Gradient background utility */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--sea-green) 0%, var(--dark-sea-green) 100%);
+}
+
+/* Scanning overlay animation */
+@keyframes scan-pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scan-animation {
+  animation: scan-pulse 2s infinite ease-in-out;
+}
+
+/* Corner animation for scanning frame */
+@keyframes corner-glow {
+  0% {
+    box-shadow: 0 0 10px var(--gold);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--gold);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--gold);
+  }
+}
+
+.scanning-corner {
+  animation: corner-glow 1.5s infinite ease-in-out;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Remove transition from specific elements */
+video, canvas, img {
+  transition: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-green-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sea-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-sea-green);
 }
